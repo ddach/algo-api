@@ -42,8 +42,9 @@ func Sort(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//todo: return as json
-	for k, v := range parsedNumbers {
+	for _, v := range parsedNumbers {
 		sort.Ints(v)
-		fmt.Fprintf(w, "%s sorted: %v", k, v)
+		//fmt.Fprintf(w, "%s sorted: %v", k, v)
 	}
+	json.NewEncoder(w).Encode(parsedNumbers)
 }
